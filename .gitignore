@@ -1,0 +1,11 @@
+# Binaries
+./bvm-miner
+
+# Logs
+miner.log
+
+# Private Data
+node_wallet.json
+
+# Go temporary
+go.sum.bak
