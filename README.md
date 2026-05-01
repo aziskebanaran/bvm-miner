@@ -1,6 +1,6 @@
 # 👷 BVM External Miner (Auto-Navigation)
 
-BVM Miner adalah unit pekerja dalam ekosistem **BVM (Bitcoin Virtual Machine)** yang bertugas melakukan komputasi blok. Miner ini dilengkapi dengan fitur **Auto-Navigation** yang secara otomatis meminta koordinat Core aktif kepada **Nexus Gateway**.
+BVM Miner adalah unit pekerja dalam ekosistem **BVM (BVM Virtual Machine)** yang bertugas melakukan komputasi blok. Miner ini dilengkapi dengan fitur **Auto-Navigation** yang secara otomatis meminta koordinat Core aktif kepada **Nexus Gateway**.
 
 ## ⚙️ Cara Kerja
 1. **Discovery**: Menghubungi Nexus di `http://localhost:9092/api/discover-core`.
