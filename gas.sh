@@ -5,14 +5,10 @@ cd ~/bvm-miner
 
 echo "👷 Memulai sinkronisasi BVM Miner ke Awan..."
 
-# 1. Ambil data terbaru dari Awan untuk mencegah konflik (Penambahan Taktis)
-echo "📡 Mengunduh data terbaru dari GitHub..."
-git pull origin main --rebase
-
-# 2. Menambahkan semua perubahan
+# 1. AMANKAN PERUBAHAN LOKAL DULU (Pindahkan git add ke sini)
 git add .
 
-# 3. Perhitungan Versi
+# 2. PERHITUNGAN VERSI
 latest_tag=$(git tag --list 'v*' | sort -V | tail -n 1)
 if [ -z "$latest_tag" ]; then
     next_tag="v1.0.0"
@@ -25,20 +21,23 @@ fi
 echo "📟 Versi Miner terakhir : $latest_tag"
 echo "🆕 Menyiapkan versi baru  : $next_tag"
 
-# 4. Komando Jenderal
+# 3. KOMANDO JENDERAL
 echo "📝 Apa pesan untuk versi $next_tag ini, Jenderal?"
 read message
-
 if [ -z "$message" ]; then
-    message="Update Miner: Auto-discovery stabilization"
+    message="Update Miner: v$next_tag"
 fi
 
-# 5. Eksekusi Git
+# 4. COMMIT LOKAL (Wajib sebelum Pull/Rebase)
 git commit -m "$next_tag: $message"
 git tag -a "$next_tag" -m "$message"
 
-echo "📡 Mengirim armada Miner ke GitHub..."
-# Gunakan branch spesifik agar lebih aman
+# 5. SINKRONISASI DENGAN AWAN (Setelah Commit Aman)
+echo "📡 Menyelaraskan data dengan GitHub..."
+git pull origin main --rebase --no-edit
+
+# 6. PUSH ARMADA KE GITHUB
+echo "🚀 Mengirim armada ke GitHub..."
 git push origin main
 git push origin "$next_tag"
 
