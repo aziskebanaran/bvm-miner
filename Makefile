@@ -2,7 +2,7 @@
 # Digunakan untuk membangun External Miner (Auto-Navigation)
 
 BINARY_NAME = bvm-miner
-SOURCE_FILE = main.go
+SOURCE_FILE = ./cmd/bvm-miner/main.go
 
 .PHONY: all build clean help
 
